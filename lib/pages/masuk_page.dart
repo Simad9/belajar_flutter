@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
+import '../kumpulan/final_project.dart';
 
-class DaftarPage extends StatelessWidget {
-  const DaftarPage({super.key});
+class MasukPage extends StatelessWidget {
+  const MasukPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +28,15 @@ class DaftarPage extends StatelessWidget {
                   style: TextStyle(fontSize: 14),
                 ),
                 Text(
-                  "Daftar",
+                  "Masuk",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 )
               ],
             ),
             SizedBox(height: 25),
-            formInput(hint: "Nama", icon: Icons.person_outline),
-            SizedBox(height: 10),
             formInput(hint: "Email", icon: Icons.email_outlined),
             SizedBox(height: 10),
             formInput(hint: "Password", icon: Icons.lock_outline),
-            SizedBox(height: 10),
-            formInput(hint: "Re-Password", icon: Icons.lock_outline),
             SizedBox(height: 10),
             Align(
                 alignment: Alignment.centerRight,
@@ -48,22 +44,23 @@ class DaftarPage extends StatelessWidget {
                     style:
                         TextStyle(fontSize: 14, fontWeight: FontWeight.w600))),
             SizedBox(height: 25),
-            SizedBox(width: double.infinity, child: buttonPrimary("Daftar")),
+            SizedBox(
+                width: double.infinity, child: buttonPrimary(context, "Masuk")),
             SizedBox(height: 25),
             Text("Atau Masuk pake", style: TextStyle(fontSize: 14)),
             SizedBox(height: 25),
             SizedBox(
                 width: double.infinity,
-                child: buttonGoogle("Daftar dengan Google")),
+                child: buttonGoogle("Masuk dengan Google")),
             SizedBox(height: 15),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text("Kamu belum punya akun? "),
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                      MaterialPageRoute(builder: (context) => DaftarPage()));
                 },
-                child: Text("Masuk",
+                child: Text("Daftar",
                     style: TextStyle(fontWeight: FontWeight.w600)),
               )
             ]),
@@ -102,9 +99,12 @@ class DaftarPage extends StatelessWidget {
     );
   }
 
-  Widget buttonPrimary(String text) {
+  Widget buttonPrimary(BuildContext context, String text) {
     return ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
+        },
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           backgroundColor: Color(0xFF4CA2FF),
@@ -125,7 +125,7 @@ class DaftarPage extends StatelessWidget {
         ),
         side: BorderSide(color: Color(0xFF4CA2FF)),
       ),
-      icon: Image.asset('assets/google.png', width: 16),
+      icon: Image.asset('assets/logo/google.png', width: 16),
       label: Text(
         text,
         style: TextStyle(color: Color(0xFF4CA2FF)),
