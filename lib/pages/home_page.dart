@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemCount: 30,
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               itemBuilder: (context, index) {
                 return habit();
               },
@@ -66,14 +66,14 @@ class HomePage extends StatelessWidget {
 
           // --- NAVBAR ---
           Container(
-            padding: EdgeInsets.all(10),
-            color: Colors.grey[200],
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            color: Color(0xFF4CA2FF),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _navButton(Icons.dashboard, "Generate"),
-                _navButton(Icons.trending_up, "Stats"),
-                _navButton(Icons.settings, "Settings"),
+                _navButton(Icons.dvr_rounded, "Generate"),
+                _navButtonActive(Icons.dashboard_rounded, "Dashboard"),
+                _navButton(Icons.account_box_rounded, "Profile"),
               ],
             ),
           )
@@ -85,23 +85,128 @@ class HomePage extends StatelessWidget {
   // Widget untuk Habit Item
   Widget habit() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: EdgeInsets.only(bottom: 10),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Color(0xFF4CA2FF), width: 3),
       ),
-      child: Text("Habit Tracker", style: TextStyle(color: Colors.white)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Wrap(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xFF4CA2FF), width: 2),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Text("Social",
+                    style: TextStyle(fontSize: 12, color: Color(0xFF4CA2FF))),
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              "Belajar Express.Js",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(height: 15),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    side: BorderSide(color: Color(0xff28B856), width: 2),
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.camera_alt_rounded, color: Color(0xff28B856)),
+                      Text(" Selesai",
+                          style: TextStyle(color: Color(0xff28B856))),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff28B856),
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.check_circle_outline_rounded,
+                          color: Colors.white),
+                      Text(" Selesai", style: TextStyle(color: Colors.white))
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 
   // Widget untuk Navbar Button
   Widget _navButton(IconData icon, String label) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Color(0xFF4CA2FF),
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+        // shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
       onPressed: () {},
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Icon(icon), Text(label)],
+        children: [
+          Icon(icon, color: Colors.white),
+          Text(label, style: TextStyle(color: Colors.white))
+        ],
+      ),
+    );
+  }
+
+  Widget _navButtonActive(IconData icon, String label) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+        // shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      onPressed: () {},
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, color: Color(0xFF4CA2FF)),
+          Text(label, style: TextStyle(color: Color(0xFF4CA2FF)))
+        ],
       ),
     );
   }
