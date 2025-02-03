@@ -35,6 +35,6 @@ class _BelajarAplikasiState extends State<BelajarAplikasi> {
     return MaterialApp(
         debugShowCheckedModeBanner: false, // Hilangkan tulisan DEBUG
         theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()),
-        home: HomePage());
+        home: TambahPage());
   }
 }
