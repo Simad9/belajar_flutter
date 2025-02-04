@@ -5,3 +5,8 @@ export '../pages/home_page.dart';
 export '../pages/tambah_page.dart';
 export '../pages/generate_page.dart';
 export '../pages/generate_click_page.dart';
+export '../pages/profile_page.dart';
+export '../pages/edit_profile_page.dart';
+export '../pages/edit_akun_page.dart';
+export '../pages/list_habits_page.dart';
+export '../pages/album_page.dart';
