@@ -1,6 +1,6 @@
-import 'package:belajar_flutter/kumpulan/final_project.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:belajar_flutter/kumpulan/final_project.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
@@ -35,6 +35,6 @@ class _BelajarAplikasiState extends State<BelajarAplikasi> {
     return MaterialApp(
         debugShowCheckedModeBanner: false, // Hilangkan tulisan DEBUG
         theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()),
-        home: TambahPage());
+        home: GeneratePage());
   }
 }
