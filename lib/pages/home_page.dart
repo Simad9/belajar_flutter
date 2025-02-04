@@ -71,7 +71,24 @@ class HomePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _navButton(Icons.dvr_rounded, "Generate"),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF4CA2FF),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    // shadowColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/logo/generate_navbar.png', width: 30),
+                      Text("Generate", style: TextStyle(color: Colors.white))
+                    ],
+                  ),
+                ),
                 _navButtonActive(Icons.dashboard_rounded, "Dashboard"),
                 _navButton(Icons.account_box_rounded, "Profile"),
               ],
@@ -173,7 +190,7 @@ class HomePage extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Color(0xFF4CA2FF),
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
         // shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -183,7 +200,11 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: Colors.white),
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 36,
+          ),
           Text(label, style: TextStyle(color: Colors.white))
         ],
       ),
@@ -204,7 +225,7 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: Color(0xFF4CA2FF)),
+          Icon(icon, color: Color(0xFF4CA2FF), size: 36),
           Text(label, style: TextStyle(color: Color(0xFF4CA2FF)))
         ],
       ),

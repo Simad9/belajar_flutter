@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_native_splash: ^2.4.4
   google_fonts: ^6.1.0
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +37,7 @@ flutter:
   assets:
     - assets/
     - assets/image/
+    - assets/logo/
     - assets/logo/tambah.png
     - assets/logo/google.png
   #   - images/a_dot_ham.jpeg
