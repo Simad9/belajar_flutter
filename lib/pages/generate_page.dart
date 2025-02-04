@@ -109,8 +109,18 @@ class _GeneratePageState extends State<GeneratePage> {
                     ],
                   ),
                 ),
-                _navButton(Icons.dashboard_rounded, "Dashboard"),
-                _navButton(Icons.account_box_rounded, "Profile"),
+                _navButton(
+                  context,
+                  Icons.dashboard_rounded,
+                  "Dashboard",
+                  HomePage(),
+                ),
+                _navButton(
+                  context,
+                  Icons.account_box_rounded,
+                  "Profile",
+                  ProfilePage(),
+                ),
               ],
             ),
           )
@@ -120,7 +130,8 @@ class _GeneratePageState extends State<GeneratePage> {
   }
 
   // Widget untuk Navbar Button
-  Widget _navButton(IconData icon, String label) {
+  Widget _navButton(
+      BuildContext context, IconData icon, String label, Widget widget) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Color(0xFF4CA2FF),
@@ -130,7 +141,11 @@ class _GeneratePageState extends State<GeneratePage> {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return widget;
+        }));
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

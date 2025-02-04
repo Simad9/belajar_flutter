@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../kumpulan/final_project.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -46,7 +47,15 @@ class HomePage extends StatelessWidget {
                     Text("Habit Tracker",
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold)),
-                    Image.asset('assets/logo/tambah.png', width: 30),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return TambahPage();
+                          }));
+                        },
+                        child:
+                            Image.asset('assets/logo/tambah.png', width: 30)),
                   ],
                 ),
               ],
@@ -80,7 +89,10 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => GeneratePage()));
+                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -90,7 +102,8 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 _navButtonActive(Icons.dashboard_rounded, "Dashboard"),
-                _navButton(Icons.account_box_rounded, "Profile"),
+                _navButton(context, Icons.account_box_rounded, "Profile",
+                    ProfilePage()),
               ],
             ),
           )
@@ -186,7 +199,8 @@ class HomePage extends StatelessWidget {
   }
 
   // Widget untuk Navbar Button
-  Widget _navButton(IconData icon, String label) {
+  Widget _navButton(
+      BuildContext context, IconData icon, String label, Widget widget) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Color(0xFF4CA2FF),
@@ -196,7 +210,12 @@ class HomePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => widget),
+        );
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

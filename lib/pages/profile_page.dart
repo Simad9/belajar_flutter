@@ -47,20 +47,26 @@ class ProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF4CA2FF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF4CA2FF),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    onPressed: () {},
-                    child: Text(
-                      "Edit Profile",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white),
-                    )),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return EditProfilePage();
+                    }));
+                  },
+                  child: Text(
+                    "Edit Profile",
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
+                ),
                 SizedBox(height: 25),
 
                 // --- NAVBAR ---
@@ -110,7 +116,12 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return GeneratePage();
+                    }));
+                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -119,7 +130,8 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                _navButton(Icons.dashboard_rounded, "Dashboard"),
+                _navButton(
+                    context, Icons.dashboard_rounded, "Dashboard", HomePage()),
                 _navButtonActive(Icons.account_box_rounded, "Profile"),
               ],
             ),
@@ -130,7 +142,8 @@ class ProfilePage extends StatelessWidget {
   }
 
   // Widget untuk Navbar Button
-  Widget _navButton(IconData icon, String label) {
+  Widget _navButton(
+      BuildContext context, IconData icon, String label, Widget widget) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Color(0xFF4CA2FF),
@@ -140,7 +153,11 @@ class ProfilePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return widget;
+        }));
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

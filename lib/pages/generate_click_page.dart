@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:belajar_flutter/kumpulan/final_project.dart';
 
 class GenerateClickPage extends StatelessWidget {
   const GenerateClickPage({super.key});
@@ -142,8 +143,18 @@ class GenerateClickPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                _navButton(Icons.dashboard_rounded, "Dashboard"),
-                _navButton(Icons.account_box_rounded, "Profile"),
+                _navButton(
+                  context,
+                  Icons.dashboard_rounded,
+                  "Dashboard",
+                  HomePage(),
+                ),
+                _navButton(
+                  context,
+                  Icons.account_box_rounded,
+                  "Profile",
+                  ProfilePage(),
+                ),
               ],
             ),
           )
@@ -153,7 +164,8 @@ class GenerateClickPage extends StatelessWidget {
   }
 
   // Widget untuk Navbar Button
-  Widget _navButton(IconData icon, String label) {
+  Widget _navButton(
+      BuildContext context, IconData icon, String label, Widget widget) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Color(0xFF4CA2FF),
@@ -163,7 +175,11 @@ class GenerateClickPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return widget;
+        }));
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
